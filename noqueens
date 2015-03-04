@@ -1,0 +1,50 @@
+CESTA_K_MINISAT = "D:\Document\Desktop\vanko26-master\vanko26-master\tools\win\minisat.exe"
+
+class NQueens:
+
+    def q(self, r, s):
+        return r * self.N + s + 1
+
+    def zapis_problem(o):
+        for r in range (self.N):
+            for i in range (self.N):
+                o.write("{} ")
+        for r in range (self.N):
+            for i in range (self.N):
+                for j in range (j+1, self.N):
+                    o.write("{} {} 0\n".format(-self.q(r,i), -self.q(r,j)))
+                
+
+
+
+
+    def dekoduj_riesenie(ries):
+        r = []
+        for c in [int(x) or x in ries.split()]:
+            if c>0:
+                r = (c-1)//self.N
+                s = (c-1) % self.N
+                self.ries.append((r,s))
+
+
+                
+    def solve(N):
+        self.N = N
+        with open("vstup.txt", "w") as o:
+            # zapiseme nas problem
+            self.zapis_problem(o)
+            
+            
+        os.system("{} vstup.txt vystup.txt".format(CESTA_K_MINISAT));
+
+        with open("vystup.txt", "r") as i:
+            # prvy riadok je SAT alebo UNSAT
+            sat = i.readline()
+            if sat == "SAT\n":
+                print("Riesenie:")
+                # druhy riadok je riesenie
+                ries = i.readline()
+                return dekoduj_riesenie(ries)
+            else:
+                print("Ziadne riesenie")
+                return []
