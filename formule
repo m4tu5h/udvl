@@ -1,0 +1,59 @@
+class Formula:
+    
+    def __init__(self, subformulas):
+        self.subformulas = subformulas
+
+    def subf(self):
+        return self.subformulas
+
+    def toString(self):
+        return ""
+
+    def eval(self, i):
+        return False
+
+class Variable(Formula):
+    def __init__(self, name):
+        Formula.__init__(self, []) # premena nema podformulu
+        self.name = name
+
+    def toString(self):
+        return self.name
+
+    def eval(self, i):
+        return i[self.name] # hodi exception ak premenna nie je v i
+
+
+class Negation(Formula):
+    def __init__(self, formula):
+        Formula.__init__(self, [formula])
+    def originalFormula(self):
+        return self.subf()[0]
+    def toString(self):
+        return "-" + self.originalFormula().toString()
+    def eval(self, i):
+        return not self.originalFormula().eval(i)
+
+class Disjunction(Formula):
+    def __init__(self, subformulas):
+        pass
+
+class BinaryFormula(Formula):
+    def __init__(self, left, right):
+        pass
+    def leftSide(self):
+        pass
+    def rightSide(self):
+        pass
+
+    
+
+    
+class Conjunction(Formula):
+    def __init__(self, subformulas):
+        pass
+class Equivalence(BinaryFormula):
+    pass
+    
+class Implication(BinaryFormula):
+    pass
